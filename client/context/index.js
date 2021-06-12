@@ -42,6 +42,7 @@ const Provider = ({ children }) => {
     })
   }, [])
 
+  // axios intercepters
   axios.interceptors.response.use(
     function(response) {
       // any status codes that lie within the range of 2xx cause this function to trigger
@@ -72,7 +73,7 @@ const Provider = ({ children }) => {
   useEffect(() => {
     const getCsrfToken = async () => {
       const { data } = await axios.get('/api/csrf-token')
-      console.log('CSRF', data)
+      // console.log('CSRF', data)
       axios.defaults.headers['X-CSRF-Token'] = data.csrfToken
     }
     getCsrfToken()

@@ -11,9 +11,10 @@ import { Context } from '../context/index'
 const { Item, SubMenu, ItemGroup } = Menu
 
 const TopNav = () => {
+  // state
   const [current, setCurrent] = useState('')
 
-  // state
+  // context
   const { state, dispatch } = useContext(Context)
   const { user } = state
 
@@ -27,8 +28,8 @@ const TopNav = () => {
   const logout = async () => {
     dispatch({ type: 'LOGOUT' })
     window.localStorage.removeItem('user')
-    const { data } = await axios.get('/api/logout')
-    toast.info(data.message)
+    const { data: { message } } = await axios.get('/api/logout')
+    toast.info(message)
     router.push('/login')
   }
 
@@ -72,7 +73,7 @@ const TopNav = () => {
         <SubMenu 
           icon={<CoffeeOutlined />}
           title={user && user.name}
-          className='ml-auto float-right'
+          className='ml-auto'
           key='subMenu'
         >
           <ItemGroup>

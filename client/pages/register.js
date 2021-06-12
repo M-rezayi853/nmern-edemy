@@ -8,9 +8,9 @@ import { useRouter } from 'next/router'
 import { Context } from '../context/index'
 
 const Register = () => {
-  const [name, setName] = useState('mahdi')
-  const [email, setEmail] = useState('mahdi@gmail.com')
-  const [password, setPassword] = useState('qwerty')
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
 
   // state
@@ -33,7 +33,10 @@ const Register = () => {
 
       const { data } = await axios.post(`api/register`, { name, email, password })
       // console.log('REGISTER RESPONSE', data)
-      toast.success('Registration successful.')
+      setName('')
+      setEmail('')
+      setPassword('')
+      toast.success('Registration successful. Please login.')
 
       setLoading(false)
     } catch (err) {

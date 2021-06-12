@@ -1,4 +1,4 @@
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 
 import TopNav from '../components/TopNav'
 import { Provider } from '../context/index'
